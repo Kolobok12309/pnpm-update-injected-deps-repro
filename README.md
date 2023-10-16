@@ -4,23 +4,25 @@ Reproduction repro for bug report about shared-workspace-lockfile=false and inej
 
 ## Details
 
+## Bug with actualize dependencies list
+
 While using `shared-workspace-lockfile=false` pnpm not update dependencies list of sub dependency(`shared`) in `pnpm-lock.yaml` of dependent package(`app`).
 
 If you run `pnpm install`, `apps/app/pnpm-lock.yaml` not updated.
 But if you remove `shared` from `apps/app/package.json` `dependencies`, run `pnpm i`, rollback `dependencies`, run `pnpm i`, it's updated.
 
 
-## Expected Behavior
+### Expected Behavior
 
 If i add dependency to `shared` package, update all dependendent `pnpm-lock.yaml` files.
 
 You can try run `pnpm i` in this repo
 
-## Actual Behavior
+### Actual Behavior
 
 Nothing happening
 
-## Detailed steps to temporary fix for users
+### Detailed steps to temporary fix for users
 
 1. Remove your updated dependency (or all)
 2. Run `pnpm i`
@@ -28,3 +30,22 @@ Nothing happening
 4. Run `pnpm i`
 
 Repeat per all dependent package
+
+
+## Bug with update injected dependency
+
+While try update injected dependency(`pnpm --filter=app up shared`), hard-link replaced with link
+
+```
+version: file:../../packages/shared -> version: link:../../packages/shared
+```
+
+### Expected behavior
+
+Update meta info about dependency
+
+### Actual behavior
+
+```
+version: file:../../packages/shared -> version: link:../../packages/shared
+```

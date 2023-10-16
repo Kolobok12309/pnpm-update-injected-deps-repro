@@ -1,0 +1,21 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  shared:
+    specifier: workspace:*
+    version: file:../../packages/shared
+
+dependenciesMeta:
+  shared:
+    injected: true
+
+packages:
+
+  file:../../packages/shared:
+    resolution: {directory: ../../packages/shared, type: directory}
+    name: shared
+    dev: false

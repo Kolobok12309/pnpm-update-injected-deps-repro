@@ -14,6 +14,8 @@ But if you remove `shared` from `apps/app/package.json` `dependencies`, run `pnp
 
 If i add dependency to `shared` package, update all dependendent `pnpm-lock.yaml` files.
 
+You can try run `pnpm i` in this repo
+
 ## Actual Behavior
 
 Nothing happening
